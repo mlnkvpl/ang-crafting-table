@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="toggleParagraph()">Toogle</button>
+      <p>Some Content: <span *ngIf="show; else alt">content</span></p>
+      <ng-template #alt>******</ng-template>
+      <ul *ngIf="counter > 0">
+          <li *ngFor="let item of clickLog; let listCounter = index"
+          [ngStyle]="{color: (listCounter >= 5 && listCounter <= 10) ? 'blue' : 'black'}">
+             {{item.index}} : {{item.data}}
+          </li>
+      </ul>
+    </div>
+  </div>
+</div>

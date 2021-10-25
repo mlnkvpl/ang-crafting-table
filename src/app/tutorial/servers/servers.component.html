@@ -1,0 +1,55 @@
+<hr>
+<label for="_sbutton">New Server Name</label>
+<input type="text" class="form-control" (input)="onUpdateServerName($event)">
+<button id="_sbutton" [disabled]="disableButton" class="btn btn-primary" (click)="changeStatus()">Add</button>
+<p *ngIf="serverWasCreated; else nopeVariable">Data output: {{ inputData }}</p>
+<ng-template #nopeVariable>
+  <p>Nope, nothing yet</p>
+</ng-template>
+
+<hr>
+<hr>
+
+<button id="_sbutton" [disabled]="disableButton" class="btn btn-primary" (click)="changeStatus()">Change Status</button>
+<p>state:
+  <span [ngStyle]="{color:getMessageColor()}" [ngClass]="{on: serverWasCreated === true}">{{serverWasCreated}} </span>
+</p>
+
+<hr>
+<hr>
+
+<label for="">Test paremeter</label>
+<input type="text" class="form-control" (input)="altOnUpdateServerName($event.target)">
+
+<hr>
+<hr>
+
+<div class="form-group">
+  <label for="_doublebinding">Double binding</label>
+  <input id="_doublebinding" type="text" class="form-control" [(ngModel)]="serverName">
+</div>
+<div class="form-group">
+  <label for="_singlebinding">Single binding</label>
+  <input id="_singlebinding" type="text" class="form-control" (input)="changeServerName($event)">
+</div>
+
+<hr>
+<hr>
+
+<h1>otuput test</h1>
+<ul class="simp-list">
+  <app-server *ngFor="let serverName of servers"></app-server>
+  <!--   <li>{{ serverName }}</li> -->
+</ul>
+
+<hr>
+<hr>
+
+<input #resetableElement type="text" class="form-control" [value]="resetable">
+<p>{{resetable}}</p>
+<button type="text" class="btn btn-primary" (click)="addResetable(resetableElement)">Add resetable</button>
+<button type="text" class="btn btn-danger" [disabled]="!resetableIsSet" (click)="resetResetable()">Reset
+  resetable</button>
+<hr>
+
+<p>{{testVar|json}}</p>
